@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Alumini Connect</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-graduation-cap"></i> Alumini Connect
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="directory.html">Directory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-3">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center gap-2"
+                                type="button" data-bs-toggle="dropdown">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=random"
+                                    class="rounded-circle" width="24" height="24">
+                                <span>John Doe</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end"
+                                style="background: var(--card-bg); border-color: var(--border-color);">
+                                <li><a class="dropdown-item" href="#" style="color: var(--text-color);">Profile</a></li>
+                                <li><a class="dropdown-item" href="#" style="color: var(--text-color);">Settings</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" style="border-color: var(--border-color);">
+                                </li>
+                                <li><a class="dropdown-item" href="#" style="color: var(--text-color);">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="page-header text-center">
+        <div class="container">
+            <h1 class="mb-3">Contact Us</h1>
+            <p class="text-muted lead mx-auto" style="max-width: 600px;">Have questions? We'd love to hear from you.
+                Send us a message and we'll respond as soon as possible.</p>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        <div class="row g-5">
+            <!-- Contact Form -->
+            <div class="col-lg-7 animate-on-scroll">
+                <div class="card shadow-md" style="background: var(--card-bg); border-color: var(--border-color);">
+                    <div class="card-body p-4 p-md-5">
+                        <h4 class="mb-4">Send a Message</h4>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="John Doe">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" placeholder="john@example.com">
+                                </div>
+                                <div class="col-12">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" placeholder="How can we help?">
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5"
+                                        placeholder="Your message here..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100 py-2">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-5 animate-on-scroll">
+                <div class="mb-4">
+                    <h4 class="mb-4">Get in Touch</h4>
+                    <p class="text-muted mb-4">You can also reach us via email or phone. Our support team is available
+                        Monday through Friday, 9am to 6pm EST.</p>
+                </div>
+
+                <div class="contact-item d-flex gap-3 mb-4">
+                    <div class="feature-icon" style="width: 50px; height: 50px; font-size: 1.25rem; margin: 0;">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-1">Email</h6>
+                        <a href="mailto:support@alumini.connect"
+                            class="text-decoration-none text-muted">support@alumini.connect</a>
+                    </div>
+                </div>
+
+                <div class="contact-item d-flex gap-3 mb-4">
+                    <div class="feature-icon" style="width: 50px; height: 50px; font-size: 1.25rem; margin: 0;">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-1">Phone</h6>
+                        <a href="tel:+15551234567" class="text-decoration-none text-muted">+1 (555) 123-4567</a>
+                    </div>
+                </div>
+
+                <div class="contact-item d-flex gap-3 mb-4">
+                    <div class="feature-icon" style="width: 50px; height: 50px; font-size: 1.25rem; margin: 0;">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h6 class="mb-1">Office</h6>
+                        <p class="text-muted mb-0">123 University Ave<br>Cambridge, MA 02138</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <a class="navbar-brand mb-3" href="#">
+                        <i class="fa-solid fa-graduation-cap"></i> Alumini Connect
+                    </a>
+                    <p class="text-muted">Building bridges between past, present, and future. Your lifelong community
+                        awaits.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-muted error-link me-2"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-muted"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Platform</h5>
+                    <a href="dashboard.html" class="footer-link">Dashboard</a>
+                    <a href="directory.html" class="footer-link">Directory</a>
+                    <a href="jobs.html" class="footer-link">Jobs</a>
+                    <a href="events.html" class="footer-link">Events</a>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Community</h5>
+                    <a href="#" class="footer-link">Guidelines</a>
+                    <a href="#" class="footer-link">Support</a>
+                    <a href="#" class="footer-link">Success Stories</a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Stay Updated</h5>
+                    <p class="text-muted mb-3">Subscribe to our newsletter for the latest updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email address" aria-label="Email address">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: var(--border-color);">
+            <div class="text-center text-muted">
+                <small>&copy; 2024 Alumini Connect. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+</body>
+
+</html>

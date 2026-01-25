@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Directory - Alumini Connect</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .member-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .member-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            border: 3px solid var(--bg-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .social-link {
+            color: var(--text-muted);
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--bg-color);
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-graduation-cap"></i> Alumini Connect
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="directory.html">Directory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-3">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center gap-2"
+                                type="button" data-bs-toggle="dropdown">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=random"
+                                    class="rounded-circle" width="24" height="24">
+                                <span>John Doe</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end"
+                                style="background: var(--card-bg); border-color: var(--border-color);">
+                                <li><a class="dropdown-item" href="#" style="color: var(--text-color);">Profile</a></li>
+                                <li><a class="dropdown-item" href="#" style="color: var(--text-color);">Settings</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" style="border-color: var(--border-color);">
+                                </li>
+                                <li><a class="dropdown-item" href="#" style="color: var(--text-color);">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="page-header text-center">
+        <div class="container">
+            <h1 class="mb-3">Member Directory</h1>
+            <p class="text-muted lead mx-auto" style="max-width: 600px;">Connect with fellow alumni, find mentors, and
+                grow your professional network.</p>
+        </div>
+    </div>
+
+    <div class="container pb-5">
+        <!-- Filters -->
+        <div class="filter-section animate-on-scroll">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-transparent border-end-0"
+                            style="border-color: var(--border-color); color: var(--text-muted);">
+                            <i class="fa-solid fa-search"></i>
+                        </span>
+                        <input type="text" class="form-control border-start-0 ps-0"
+                            placeholder="Search by name or company..."
+                            style="background: transparent; border-color: var(--border-color); color: var(--text-color);">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select"
+                        style="background-color: var(--card-bg); border-color: var(--border-color); color: var(--text-color);">
+                        <option selected>All Class Years</option>
+                        <option value="2023">Class of 2023</option>
+                        <option value="2022">Class of 2022</option>
+                        <option value="2021">Class of 2021</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select"
+                        style="background-color: var(--card-bg); border-color: var(--border-color); color: var(--text-color);">
+                        <option selected>All Industries</option>
+                        <option value="tech">Technology</option>
+                        <option value="finance">Finance</option>
+                        <option value="healthcare">Healthcare</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary w-100">Filter</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Directory Grid -->
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-md-6 col-lg-3 animate-on-scroll">
+                <div class="member-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Jane Cooper" class="member-img">
+                    <h5 class="mb-1">Jane Cooper</h5>
+                    <p class="text-primary small mb-2">Class of 2019</p>
+                    <p class="text-muted small mb-3">Product Designer at Stripe</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm w-100">Connect</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-md-6 col-lg-3 animate-on-scroll">
+                <div class="member-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Robert Fox" class="member-img">
+                    <h5 class="mb-1">Robert Fox</h5>
+                    <p class="text-primary small mb-2">Class of 2020</p>
+                    <p class="text-muted small mb-3">Software Engineer at Google</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm w-100">Connect</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-6 col-lg-3 animate-on-scroll">
+                <div class="member-card">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Esther Howard" class="member-img">
+                    <h5 class="mb-1">Esther Howard</h5>
+                    <p class="text-primary small mb-2">Class of 2018</p>
+                    <p class="text-muted small mb-3">Marketing Director at Airbnb</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm w-100">Connect</button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-md-6 col-lg-3 animate-on-scroll">
+                <div class="member-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Cameron Williamson" class="member-img">
+                    <h5 class="mb-1">Cameron Williamson</h5>
+                    <p class="text-primary small mb-2">Class of 2021</p>
+                    <p class="text-muted small mb-3">Data Scientist at Netflix</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-globe"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm w-100">Connect</button>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-md-6 col-lg-3 animate-on-scroll">
+                <div class="member-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Leslie Alexander" class="member-img">
+                    <h5 class="mb-1">Leslie Alexander</h5>
+                    <p class="text-primary small mb-2">Class of 2022</p>
+                    <p class="text-muted small mb-3">UX Researcher at Spotify</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-dribbble"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm w-100">Connect</button>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-md-6 col-lg-3 animate-on-scroll">
+                <div class="member-card">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Wade Warren" class="member-img">
+                    <h5 class="mb-1">Wade Warren</h5>
+                    <p class="text-primary small mb-2">Class of 2020</p>
+                    <p class="text-muted small mb-3">Founder at Startup Inc.</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm w-100">Connect</button>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="col-md-6 col-lg-3 animate-on-scroll">
+                <div class="member-card">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Savannah Nguyen" class="member-img">
+                    <h5 class="mb-1">Savannah Nguyen</h5>
+                    <p class="text-primary small mb-2">Class of 2019</p>
+                    <p class="text-muted small mb-3">Digital Marketer at Tesla</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm w-100">Connect</button>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="col-md-6 col-lg-3 animate-on-scroll">
+                <div class="member-card">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Guy Hawkins" class="member-img">
+                    <h5 class="mb-1">Guy Hawkins</h5>
+                    <p class="text-primary small mb-2">Class of 2021</p>
+                    <p class="text-muted small mb-3">Sales Manager at Oracle</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-phone"></i></a>
+                        <a href="#" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm w-100">Connect</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-5" aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#"
+                        style="background: var(--card-bg); border-color: var(--border-color); color: var(--text-color);">Previous</a>
+                </li>
+                <li class="page-item active">
+                    <a class="page-link" href="#"
+                        style="background: var(--primary-color); border-color: var(--primary-color);">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#"
+                        style="background: var(--card-bg); border-color: var(--border-color); color: var(--text-color);">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#"
+                        style="background: var(--card-bg); border-color: var(--border-color); color: var(--text-color);">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#"
+                        style="background: var(--card-bg); border-color: var(--border-color); color: var(--text-color);">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <a class="navbar-brand mb-3" href="#">
+                        <i class="fa-solid fa-graduation-cap"></i> Alumini Connect
+                    </a>
+                    <p class="text-muted">Building bridges between past, present, and future. Your lifelong community
+                        awaits.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-muted error-link me-2"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-muted"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Platform</h5>
+                    <a href="dashboard.html" class="footer-link">Dashboard</a>
+                    <a href="directory.html" class="footer-link">Directory</a>
+                    <a href="jobs.html" class="footer-link">Jobs</a>
+                    <a href="events.html" class="footer-link">Events</a>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Community</h5>
+                    <a href="#" class="footer-link">Guidelines</a>
+                    <a href="#" class="footer-link">Support</a>
+                    <a href="#" class="footer-link">Success Stories</a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Stay Updated</h5>
+                    <p class="text-muted mb-3">Subscribe to our newsletter for the latest updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email address" aria-label="Email address">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: var(--border-color);">
+            <div class="text-center text-muted">
+                <small>&copy; 2024 Alumini Connect. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+</body>
+
+</html>
