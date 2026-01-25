@@ -44,10 +44,9 @@
         <div class="login-card animate-on-scroll">
             <div class="text-center mb-4">
                 <a class="navbar-brand mb-3 d-inline-block text-decoration-none" href="index.html">
-                    <i class="fa-solid fa-graduation-cap text-primary fa-2x"></i>
+                    <i class="fa-solid fa-graduation-cap auth-icon"></i>
                 </a>
                 <h2 class="fw-bold">Welcome Back</h2>
-                <p class="text-muted">Sign in to access your alumni network</p>
             </div>
 
             <form id="loginForm">
@@ -69,9 +68,26 @@
                     <a href="#" class="text-primary text-decoration-none small">Forgot password?</a>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Sign In</button>
-                <div class="text-center mt-3">
-                    <button type="button" id="demoLoginBtn" class="btn btn-outline-secondary btn-sm w-100">Login as Demo
-                        User</button>
+
+
+                <div class="position-relative my-4">
+                    <hr class="text-secondary opacity-25">
+                    <span
+                        class="position-absolute top-50 start-50 translate-middle bg-white px-2 text-muted small text-nowrap"
+                        style="z-index: 1;">Or</span>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="button"
+                        class="btn btn-social border w-100 d-flex align-items-center justify-content-center gap-2">
+                        <i class="fa-brands fa-google text-danger"></i>
+                        Google
+                    </button>
+                    <button type="button"
+                        class="btn btn-social border w-100 d-flex align-items-center justify-content-center gap-2">
+                        <i class="fa-brands fa-facebook-f text-primary"></i>
+                        Facebook
+                    </button>
                 </div>
             </form>
 

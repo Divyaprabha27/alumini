@@ -568,3 +568,28 @@ footer {
         justify-content: center;
     }
 }
+
+/* Auth Page Specifics */
+.auth-icon {
+    font-size: 1.2rem;
+    /* Smaller than 1.5rem */
+    color: var(--primary-color);
+    transition: color 0.3s;
+}
+
+[data-theme="dark"] .auth-icon {
+    color: #ffffff !important;
+}
+
+.btn-social {
+    color: var(--text-color);
+    border-color: var(--border-color);
+    background-color: transparent;
+    transition: all 0.2s;
+}
+
+.btn-social:hover {
+    border-color: var(--text-color);
+    color: var(--text-color);
+    background-color: rgba(128, 128, 128, 0.05);
+}
