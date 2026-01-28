@@ -84,10 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeIcon = themeToggle?.querySelector('i');
 
     // Check local storage or system preference
+    // Check local storage
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    // Default to light, only enable dark if explicitly saved
+    if (savedTheme === 'dark') {
         htmlElement.setAttribute('data-theme', 'dark');
         if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
@@ -157,6 +158,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+    }
+    // Sidebar Toggle
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.dashboard-sidebar');
+
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 992 &&
+                sidebar.classList.contains('show') &&
+                !sidebar.contains(e.target) &&
+                e.target !== sidebarToggle) {
+                sidebar.classList.remove('show');
+            }
         });
     }
 });

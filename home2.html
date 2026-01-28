@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumini Connect - Home 2</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Home 2 Specific Styles */
+        .hero-v2 {
+            text-align: center;
+            padding: 8rem 0 6rem;
+            background: linear-gradient(180deg, rgba(79, 70, 229, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        .hero-v2 h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #4f46e5, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .event-list-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .event-list-item:hover {
+            background-color: rgba(79, 70, 229, 0.03);
+        }
+
+        .event-date {
+            text-align: center;
+            min-width: 60px;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-graduation-cap"></i> Alumini Connect
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="index.html" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html">Home 1</a></li>
+                            <li><a class="dropdown-item" href="home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="directory.html">Directory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-primary">Sign In</button>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero V2 -->
+    <header class="hero-v2 animate-on-scroll">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">Welcome
+                        Alumni</span>
+                    <h1>Your Network, Your Future, Your Community</h1>
+                    <p class="lead text-muted mb-4">Empowering alumni to connect, inspire, and grow together in a world
+                        of endless possibilities.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="signup.html" class="btn btn-primary btn-lg rounded-pill px-4">Join Community</a>
+                        <a href="directory.html" class="btn btn-outline-secondary btn-lg rounded-pill px-4">Find
+                            Friends</a>
+                    </div>
+                    <div class="mt-5">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                            alt="Community" class="img-fluid rounded-4 shadow-lg border">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 2: About / Mission -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Our Mission" class="img-fluid rounded-4 shadow-md">
+                </div>
+                <div class="col-lg-6 animate-on-scroll">
+                    <h2 class="mb-4">Bridging the Gap Between Past and Future</h2>
+                    <p class="text-muted mb-4">We believe that graduation is not the end, but the beginning of a
+                        lifelong relationship. Our mission is to create a dynamic ecosystem where alumni can thrive
+                        professionally and personally.</p>
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i class="fa-solid fa-circle-check text-success"></i>
+                                <span class="fw-semibold">Mentorship</span>
+                            </div>
+                            <p class="small text-muted">Guide the next generation of leaders.</p>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i class="fa-solid fa-circle-check text-success"></i>
+                                <span class="fw-semibold">Networking</span>
+                            </div>
+                            <p class="small text-muted">Connect with industry peers.</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-link text-primary fw-semibold p-0 mt-3">Learn more about our mission <i
+                            class="fa-solid fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Alumni Gallery -->
+    <section class="py-5 bg-light-alt text-center">
+        <div class="container">
+            <h2 class="mb-5 animate-on-scroll">Community Highlights</h2>
+            <div class="row g-4 animate-on-scroll">
+                <div class="col-md-3 col-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Alumni 1">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Alumni 2">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Alumni 3">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Alumni 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Upcoming Events List -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 animate-on-scroll">
+                    <h2 class="text-center mb-5">Upcoming Events</h2>
+                    <div class="card border-0 shadow-sm">
+                        <div class="event-list-item">
+                            <div class="event-date">
+                                <div class="fs-4">15</div>
+                                <div class="text-uppercase small">Mar</div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="mb-1">Annual Spring Reunion 2026</h5>
+                                <p class="text-muted small mb-0"><i class="fa-solid fa-location-dot me-1"></i> Grand
+                                    Hall, Campus Center</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary rounded-pill">RSVP</button>
+                        </div>
+                        <div class="event-list-item">
+                            <div class="event-date">
+                                <div class="fs-4">22</div>
+                                <div class="text-uppercase small">Apr</div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="mb-1">Tech Industry Networking Night</h5>
+                                <p class="text-muted small mb-0"><i class="fa-solid fa-location-dot me-1"></i> Downtown
+                                    Innovation Hub</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary rounded-pill">RSVP</button>
+                        </div>
+                        <div class="event-list-item border-bottom-0">
+                            <div class="event-date">
+                                <div class="fs-4">05</div>
+                                <div class="text-uppercase small">May</div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="mb-1">Career Workshop: Leadership Skills</h5>
+                                <p class="text-muted small mb-0"><i class="fa-solid fa-video me-1"></i> Online Webinar
+                                </p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary rounded-pill">RSVP</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Testimonials Carousel -->
+    <section class="py-5 bg-light-alt">
+        <div class="container">
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center animate-on-scroll">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card">
+                                    <div class="mb-4 text-warning">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h4 class="mb-4 fst-italic">"The connections I've made through this platform have
+                                        been invaluable for my career growth."</h4>
+                                    <div>
+                                        <div class="fw-bold">James Carter</div>
+                                        <div class="text-muted small">Marketing Director, Class of '15</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center animate-on-scroll">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card">
+                                    <div class="mb-4 text-warning">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h4 class="mb-4 fst-italic">"It's so easy to stay in touch with old classmates and
+                                        organize meetups. Love the interface!"</h4>
+                                    <div>
+                                        <div class="fw-bold">Emily Chen</div>
+                                        <div class="text-muted small">Software Engineer, Class of '20</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Newsletter -->
+    <section class="py-5">
+        <div class="container animate-on-scroll">
+            <div class="cta-section text-center bg-primary text-white border-0"
+                style="background: var(--primary-color);">
+                <div class="cta-content">
+                    <h2 class="mb-3 text-white">Stay in the Loop</h2>
+                    <p class="mb-4 text-white-50">Get the latest alumni news, event updates, and career opportunities
+                        delivered to your inbox.</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control border-0 p-3"
+                                    placeholder="Enter your email address" aria-label="Email address">
+                                <button class="btn btn-dark px-4" type="button">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <a class="navbar-brand mb-3" href="#">
+                        <i class="fa-solid fa-graduation-cap"></i> Alumini Connect
+                    </a>
+                    <p class="text-muted">Building bridges between past, present, and future. Your lifelong community
+                        awaits.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-muted error-link me-2"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-muted me-2"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-muted"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Platform</h5>
+                    <a href="dashboard.html" class="footer-link">Dashboard</a>
+                    <a href="directory.html" class="footer-link">Directory</a>
+                    <a href="jobs.html" class="footer-link">Jobs</a>
+                    <a href="events.html" class="footer-link">Events</a>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-3">Community</h5>
+                    <a href="#" class="footer-link">Guidelines</a>
+                    <a href="#" class="footer-link">Support</a>
+                    <a href="#" class="footer-link">Success Stories</a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Stay Updated</h5>
+                    <p class="text-muted mb-3">Subscribe to our newsletter for the latest updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Email address" aria-label="Email address">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: var(--border-color);">
+            <div class="text-center text-muted">
+                <small>&copy; 2026 Alumini Connect. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+</body>
+
+</html>
