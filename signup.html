@@ -24,7 +24,6 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(236, 72, 153, 0.1));
-            padding: 2rem 0;
         }
 
         .login-card {
@@ -34,8 +33,22 @@
             padding: 2.5rem;
             width: 100%;
             max-width: 500px;
-            /* Slightly wider for signup */
             box-shadow: var(--shadow-lg);
+        }
+        
+        .login-card .navbar-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+            text-decoration: none;
+        }
+        
+        .login-card .navbar-brand i {
+            margin-right: 0.5rem;
         }
     </style>
 </head>
@@ -45,9 +58,11 @@
     <div class="login-container">
         <div class="login-card animate-on-scroll">
             <div class="text-center mb-4">
-                <a class="navbar-brand mb-3 d-inline-block text-decoration-none" href="index.html">
-                    <i class="fa-solid fa-graduation-cap auth-icon"></i>
+                <nav class="navbar navbar-expand-xl sticky-top">
+                    <a  style="display: table;margin: 0 auto;" class="navbar-brand" href="index.html">
+                    <i class="fa-solid fa-graduation-cap"></i> Alumini Connect
                 </a>
+                </nav>
                 <h4 class="fw-bold">Join the Community</h4>
             </div>
 
