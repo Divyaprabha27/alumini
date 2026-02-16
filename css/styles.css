@@ -124,6 +124,154 @@ a {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Mobile and Tablet Navigation Overlay */
+@media (max-width: 1024px) {
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: var(--navbar-bg);
+        backdrop-filter: blur(10px);
+        z-index: 1050;
+        padding: 35px 20px 20px;
+        max-height: 100vh;
+        overflow-y: auto;
+        border-bottom: 1px solid var(--border-color);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .navbar-collapse.show {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Hide Home dropdown in mobile and show separate Home1/Home2 */
+    .navbar-nav .nav-item.dropdown {
+        display: none;
+    }
+    
+    /* Add separate Home1 and Home2 items in mobile */
+    .navbar-nav::before {
+        content: '';
+        display: none;
+    }
+    
+    .navbar-nav .mobile-home1,
+    .navbar-nav .mobile-home2 {
+        display: block !important;
+    }
+    
+    .navbar-nav {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease 0.1s;
+    }
+    
+    .navbar-collapse.show .navbar-nav {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+    }
+    
+    .navbar-collapse.show .navbar-nav .nav-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .navbar-nav .nav-item:nth-child(1) { transition-delay: 0.05s; }
+    .navbar-nav .nav-item:nth-child(2) { transition-delay: 0.1s; }
+    .navbar-nav .nav-item:nth-child(3) { transition-delay: 0.15s; }
+    .navbar-nav .nav-item:nth-child(4) { transition-delay: 0.2s; }
+    .navbar-nav .nav-item:nth-child(5) { transition-delay: 0.25s; }
+    .navbar-nav .nav-item:nth-child(6) { transition-delay: 0.3s; }
+    .navbar-nav .nav-item:nth-child(7) { transition-delay: 0.35s; }
+    .navbar-nav .nav-item:nth-child(8) { transition-delay: 0.4s; }
+    
+    .navbar-nav .dropdown-menu {
+        position: static;
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease 0.2s;
+    }
+    
+    .navbar-collapse.show .navbar-nav .dropdown-menu {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .navbar-nav .dropdown-menu .dropdown-item {
+        color: var(--text-color);
+        padding: 10px 20px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease 0.3s;
+    }
+    
+    .navbar-collapse.show .navbar-nav .dropdown-menu .dropdown-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .navbar-nav .dropdown-menu .dropdown-item:nth-child(1) { transition-delay: 0.35s; }
+    .navbar-nav .dropdown-menu .dropdown-item:nth-child(2) { transition-delay: 0.4s; }
+    .navbar-nav .dropdown-menu .dropdown-item:nth-child(3) { transition-delay: 0.45s; }
+    
+    /* Mobile Close Button */
+    .mobile-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: var(--text-color);
+        cursor: pointer;
+        z-index: 1051;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        transition: all 0.2s ease;
+        opacity: 0;
+        transform: scale(0.8) rotate(45deg);
+    }
+    
+    .navbar-collapse.show .mobile-close-btn {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        transition-delay: 0.5s;
+    }
+    
+    .mobile-close-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+}
+
 /* Buttons */
 .btn-primary {
     background-color: var(--primary-color);
@@ -306,6 +454,7 @@ footer {
     padding: 2rem;
     height: 100%;
     transition: all var(--transition-speed);
+    text-align: center;
 }
 
 .story-card:hover {
