@@ -59,6 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Logout Flow & Navbar State
     const signInBtn = document.querySelector('.nav-item .btn-primary');
+    // Find logout link by text content for better reliability
+    const logoutLink = Array.from(document.querySelectorAll('.dropdown-item'))
+        .find(link => link.textContent.trim() === 'Logout');
+    
+    // Handle main navigation logout button
     if (signInBtn) {
         if (isAuthenticated) {
             // User is signed in: Change "Sign In" to "Sign Out"
@@ -76,6 +81,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'login.html';
             });
         }
+    }
+    
+    // Handle dropdown logout link (for pages like directory.html)
+    // This should work regardless of authentication state
+    if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Logout clicked from dropdown'); // Debug log
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        });
+    } else {
+        console.log('Logout link not found'); // Debug log
     }
 
     // Theme Management
@@ -160,23 +178,169 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    // Sidebar Toggle
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebar = document.querySelector('.dashboard-sidebar');
-
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('show');
-        });
-
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth < 992 &&
-                sidebar.classList.contains('show') &&
-                !sidebar.contains(e.target) &&
-                e.target !== sidebarToggle) {
-                sidebar.classList.remove('show');
+    // Mobile Navigation Close Button
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    
+    // Add mobile Home1 and Home2 menu items
+    function addMobileHomeItems() {
+        if (window.innerWidth <= 1024 && navbarCollapse && !navbarCollapse.querySelector('.mobile-home1')) {
+            // Create Home1 menu item
+            const home1Item = document.createElement('li');
+            home1Item.className = 'nav-item mobile-home1';
+            home1Item.innerHTML = '<a class="nav-link" href="index.html">Home 1</a>';
+            
+            // Create Home2 menu item
+            const home2Item = document.createElement('li');
+            home2Item.className = 'nav-item mobile-home2';
+            home2Item.innerHTML = '<a class="nav-link" href="home2.html">Home 2</a>';
+            
+            // Insert at the beginning of navbar-nav
+            const navbarNav = navbarCollapse.querySelector('.navbar-nav');
+            if (navbarNav) {
+                navbarNav.insertBefore(home1Item, navbarNav.firstChild);
+                navbarNav.insertBefore(home2Item, home1Item.nextSibling);
+            }
+        }
+    }
+    
+    // Remove mobile Home1 and Home2 menu items on desktop
+    function removeMobileHomeItems() {
+        const home1Item = navbarCollapse?.querySelector('.mobile-home1');
+        const home2Item = navbarCollapse?.querySelector('.mobile-home2');
+        if (home1Item && window.innerWidth > 1024) {
+            home1Item.remove();
+        }
+        if (home2Item && window.innerWidth > 1024) {
+            home2Item.remove();
+        }
+    }
+    
+    // Add close button to mobile navigation
+    function addCloseButton() {
+        if (window.innerWidth <= 1024 && navbarCollapse && !navbarCollapse.querySelector('.mobile-close-btn')) {
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'mobile-close-btn';
+            closeBtn.innerHTML = '✕';
+            closeBtn.setAttribute('aria-label', 'Close navigation');
+            navbarCollapse.appendChild(closeBtn);
+            
+            // Add click event to close button
+            closeBtn.addEventListener('click', () => {
+                // Start closing animation
+                navbarCollapse.classList.remove('show');
+                
+                // Delay actual hiding to allow transition to complete
+                setTimeout(() => {
+                    if (!navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.style.display = 'none';
+                    }
+                }, 400); // Match CSS transition duration
+            });
+        }
+    }
+    
+    // Handle navbar toggle click
+    if (navbarToggler) {
+        navbarToggler.addEventListener('click', () => {
+            if (navbarCollapse.classList.contains('show')) {
+                // Closing
+                navbarCollapse.classList.remove('show');
+                setTimeout(() => {
+                    if (!navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.style.display = 'none';
+                    }
+                }, 400);
+            } else {
+                // Opening
+                navbarCollapse.style.display = 'block';
+                setTimeout(() => {
+                    navbarCollapse.classList.add('show');
+                }, 10); // Small delay to ensure display is set before adding show class
             }
         });
     }
+    
+    // Remove close button on desktop
+    function removeCloseButton() {
+        const closeBtn = navbarCollapse?.querySelector('.mobile-close-btn');
+        if (closeBtn && window.innerWidth > 1024) {
+            closeBtn.remove();
+        }
+    }
+    
+    // Handle mobile navigation
+    if (navbarToggler && navbarCollapse) {
+        navbarToggler.addEventListener('click', () => {
+            if (navbarCollapse.classList.contains('show')) {
+                // Closing
+                navbarCollapse.classList.remove('show');
+                setTimeout(() => {
+                    if (!navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.style.display = 'none';
+                    }
+                }, 400);
+            } else {
+                // Opening
+                navbarCollapse.style.display = 'block';
+                setTimeout(() => {
+                    navbarCollapse.classList.add('show');
+                }, 10); // Small delay to ensure display is set before adding show class
+            }
+            // Add close button when opening
+            setTimeout(addCloseButton, 10);
+        });
+        
+        // Initial setup
+        addMobileHomeItems();
+        addCloseButton();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            addMobileHomeItems();
+            removeMobileHomeItems();
+            addCloseButton();
+            removeCloseButton();
+        });
+        
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navbarCollapse.classList.contains('show') && 
+                !navbarCollapse.contains(e.target) && 
+                !navbarToggler.contains(e.target)) {
+                navbarCollapse.classList.remove('show');
+                setTimeout(() => {
+                    if (!navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.style.display = 'none';
+                    }
+                }, 400);
+                setTimeout(removeCloseButton, 300);
+            }
+        });
+    }
+    
+    // Sidebar Toggle
+const sidebarToggle = document.getElementById('sidebarToggle');
+const sidebar = document.querySelector('.dashboard-sidebar');
+
+if (sidebarToggle && sidebar) {
+
+    sidebarToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // prevent immediate close
+        sidebar.classList.toggle('show');
+    });
+
+    // Close sidebar when clicking outside (mobile/tablet)
+    document.addEventListener('click', (e) => {
+        if (
+            window.innerWidth < 992 &&
+            sidebar.classList.contains('show') &&
+            !sidebar.contains(e.target) &&
+            !sidebarToggle.contains(e.target)   // ✅ FIXED HERE
+        ) {
+            sidebar.classList.remove('show');
+        }
+    });
+}
+
 });
